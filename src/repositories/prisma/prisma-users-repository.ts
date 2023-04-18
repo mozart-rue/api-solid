@@ -4,16 +4,20 @@ import { UserRepository } from '../users-repository';
 
 export class PrismaUsersRepository implements UserRepository {
   async findByEmail(email: string) {
-    return await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         email,
       },
     });
+
+    return user;
   }
 
   async create(data: Prisma.UserCreateInput) {
-    return await prisma.user.create({
+    const user = await prisma.user.create({
       data,
     });
+
+    return user;
   }
 }
