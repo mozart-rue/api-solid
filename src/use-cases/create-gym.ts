@@ -1,16 +1,16 @@
-import { Gym, User } from '@prisma/client';
-import { GymRepository } from '@/repositories/gyms-repository';
+import { Gym } from '@prisma/client'
+import { GymRepository } from '@/repositories/gyms-repository'
 
 interface ICreateGymUseCaseRequest {
-  title: string;
-  description: string | null;
-  phone: string | null;
-  longitude: number;
-  latitude: number;
+  title: string
+  description: string | null
+  phone: string | null
+  longitude: number
+  latitude: number
 }
 
 interface ICreateGymUseCaseResponse {
-  gym: Gym;
+  gym: Gym
 }
 
 export class CreateGymUseCase {
@@ -21,17 +21,16 @@ export class CreateGymUseCase {
     description,
     phone,
     longitude,
-    latitude
+    latitude,
   }: ICreateGymUseCaseRequest): Promise<ICreateGymUseCaseResponse> {
-
     const gym = await this.gymRepostory.create({
       title,
       description,
       phone,
       longitude,
-      latitude
-    });
+      latitude,
+    })
 
-    return { gym };
+    return { gym }
   }
 }
